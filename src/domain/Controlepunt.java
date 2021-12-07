@@ -47,5 +47,13 @@ public class Controlepunt {
         return controlePost;
     }
 
-
+    @Override
+    public String toString() {
+        return "Controlepunt{" +
+                "naam='" + naam + '\'' +
+                ", breedte=" + breedte +
+                ", lengte=" + lengte +
+                ", controlePost=" + controlePost +
+                '}';
+    }
 }

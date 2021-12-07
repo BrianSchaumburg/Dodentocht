@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Tocht {
     private LocalDate datum;
     ArrayList<deelnemer> deelnemerArrayList = new ArrayList<>();
-    Controlepunt[] controlepunts;
+    public Controlepunt[] controlepunts;
     public Tocht(LocalDate datum, int aantal)
     {
         if (aantal <= 0) {
@@ -27,6 +27,7 @@ public class Tocht {
     private void setDate(LocalDate datum) {
         if(datum == null || datum.isBefore(LocalDate.now()))
             throw new IllegalArgumentException();
+        datum.atTime(21,00);
         this.datum = datum;
     }
     public void addControlepunt(Controlepunt controlepunt)
@@ -35,27 +36,27 @@ public class Tocht {
             throw new IllegalArgumentException();
 
         }
-        if(controlepunts.length>=2)
+        for(int i= 0; i < controlepunts.length; i++ )
         {
-            for(int i = 0; i < controlepunts.length; i++ )
-            {
-                if(controlepunts[i] == null)
+            if (controlepunts[i] == null) {
+                if(i!=0 && i!=1)
                 {
-
-                     if(controlepunts[i-2].isHeeftEHBOPost()||controlepunts[i-1].isHeeftEHBOPost())
-                {
-                    controlepunts[i]=controlepunt;
+                    if(controlepunts[i-1].isHeeftEHBOPost()) {
+                        controlepunts[i]= controlepunt;
+                        break;
+                    }
+                    else if (controlepunts[i-2].isHeeftEHBOPost() || controlepunt.isHeeftEHBOPost())
+                    { controlepunts[i]= controlepunt;
+                    break;}
+                    else
+                        throw new IllegalArgumentException();
                 }
-                   else if(controlepunts[i-1].isHeeftEHBOPost()==false && controlepunt.isHeeftEHBOPost()==false)
-                   {
-                       throw new IllegalStateException();
-                   }
-
-                   break;
-                }
-
+                controlepunts[i]= controlepunt;
+                break;
             }
         }
+
+
 
     }
     public void addDeelnemer(deelnemer deelnemer)
@@ -87,7 +88,7 @@ public class Tocht {
     }
     @Override
     public String toString() {
-        return "Dodentocht" + datum.getYear() + ":" + datum.getYear()+"-"+datum.getDayOfMonth()+"-"+datum.getDayOfMonth()
+        return "Dodentocht" + datum.getYear() + ":" + datum.getMonth()+"-"+datum.getDayOfMonth()+"-"+datum.getDayOfMonth()
                 + "\n"
                 +   ControlePointsInformation()+ "\n"
                 +"huidige tijdstip : "+ LocalTime.now()+ "\n"

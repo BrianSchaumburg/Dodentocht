@@ -38,6 +38,7 @@ private LocalTime[] times;
             )
             {
                 this.times[i] = time;
+                break;
             }
         }
     }
@@ -63,6 +64,7 @@ private LocalTime[] times;
                 waarde = i ;
             }
         }
+        if(waarde == 0) waarde = times.length-1;
         long hours=  ChronoUnit.HOURS.between(times[0], times[waarde]);
         long minutes = ChronoUnit.MINUTES.between(times[0],times[waarde]);
         long seconds = ChronoUnit.SECONDS.between(times[0], times[waarde]);
