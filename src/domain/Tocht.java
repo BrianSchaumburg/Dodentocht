@@ -49,7 +49,7 @@ public class Tocht {
                     { controlepunts[i]= controlepunt;
                     break;}
                     else
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("De ehbo regeling klopt niet");
                 }
                 controlepunts[i]= controlepunt;
                 break;

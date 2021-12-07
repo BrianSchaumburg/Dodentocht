@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 public class main {
     public static void main(String[] args) {
-        Controlepunt grote= new Controlepunt("Grote markt", 50.879128,4.701187,true);
-        Controlepunt arenberg= new Controlepunt("arenbergkasteel", 50.879128,4.701187,false);
-        Controlepunt zoetwater= new Controlepunt("zoetwater", 50.879128,4.701187,true);
-        Controlepunt proximus= new Controlepunt("proximus", 50.879128,4.701187,true);
-        Controlepunt markt= new Controlepunt("grote markt", 50.879128,4.701187,false);
+        Controlepunt grote= new Controlepunt("Grote Markt", 50.879128,4.701187,true);
+        Controlepunt arenberg= new Controlepunt("Arenberg Kasteel", 50.863662,4.687672,false);
+        Controlepunt zoetwater= new Controlepunt("Zoetwater Park", 50.879128,4.701187,true);
+        Controlepunt proximus= new Controlepunt("Campus Proximus", 50.879128,4.701187,true);
+        Controlepunt markt= new Controlepunt("Grote Markt", 50.879128,4.701187,false);
         deelnemer brian = new deelnemer("brian");
         deelnemer marina = new deelnemer("marina");
         deelnemer deevid = new deelnemer("deevid");
@@ -34,6 +34,21 @@ public class main {
             brian.addtime(LocalTime.of(hour,minutes++));
         }
         System.out.println(tocht.toString());
+    //testen van de error
+        try {
+            Tocht foutetocht = new Tocht(LocalDate.now(), 3);
+            Controlepunt test1 = new Controlepunt("Grote Markt", 50.879128, 4.701187, false);
+            Controlepunt test2 = new Controlepunt("Grote Markt", 50.879128, 4.701187, false);
+            Controlepunt test3 = new Controlepunt("Grote Markt", 50.879128, 4.701187, false);
+
+            foutetocht.addControlepunt(test1);
+            foutetocht.addControlepunt(test2);
+            foutetocht.addControlepunt(test3);
+        }
+        catch(Exception e )
+        {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
