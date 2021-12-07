@@ -69,7 +69,7 @@ public class Tocht {
     }
     public String ControlePointsInformation()
     {
-        String result = "wandelparcours + \n";
+        String result = "Wandelparcours:\n";
         for(Controlepunt punt: this.controlepunts)
         {
             result+=punt.toString()+"\n";
@@ -78,7 +78,7 @@ public class Tocht {
     }
     public String Deelnemers()
     {
-        String result = deelnemerArrayList.size() + "zijn ingeschreven, namelijk \n";
+        String result = deelnemerArrayList.size() + " zijn ingeschreven, namelijk \n";
         for(deelnemer punt: this.deelnemerArrayList)
         {
             result+=punt.toString()+"\n";
@@ -88,11 +88,11 @@ public class Tocht {
     }
     @Override
     public String toString() {
-        return "Dodentocht" + datum.getYear() + ":" + datum.getMonth()+"-"+datum.getDayOfMonth()+"-"+datum.getDayOfMonth()
+        return "Dodentocht " + datum.getYear() + ":" + datum.getMonth()+"-"+datum.getDayOfMonth()+"-"+datum.getDayOfMonth()
                 + "\n"
                 +   ControlePointsInformation()+ "\n"
-                +"huidige tijdstip : "+ LocalTime.now()+ "\n"
+                +"Huidige tijdstip : "+ LocalTime.now()+ "\n" + "\n"
                 + this.Deelnemers() + "\n"
-                + this.deelnemerArrayList.stream().filter(i->i.finish()).count() + "deelnemer heeft de tocht voltooid";
+                + this.deelnemerArrayList.stream().filter(i->i.finish()).count() + " deelnemer heeft de tocht voltooid";
     }
 }

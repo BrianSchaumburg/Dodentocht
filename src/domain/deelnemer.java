@@ -74,7 +74,7 @@ private LocalTime[] times;
 
     @Override
     public String toString() {
-       return this.finish()? this.naam+"heeft de tocht beëindigd in een tijd van: "+ this.wandeltijd(): this.naam+"heeft de tocht niet beëindigd; laatse controlepunt: "+this.lastcontrolepunt();
+       return this.finish()? this.naam+" heeft de tocht beëindigd in een tijd van: "+ this.wandeltijd(): this.naam+" heeft de tocht niet beëindigd; laatse controlepunt = "+this.lastcontrolepunt();
 
     }
 }

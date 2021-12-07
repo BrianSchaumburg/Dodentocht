@@ -49,11 +49,8 @@ public class Controlepunt {
 
     @Override
     public String toString() {
-        return "Controlepunt{" +
-                "naam='" + naam + '\'' +
-                ", breedte=" + breedte +
-                ", lengte=" + lengte +
-                ", controlePost=" + controlePost +
-                '}';
+        String result = naam+ " "+breedte+","+lengte+")"+ " ";
+        result+= isHeeftEHBOPost()? "EHBO POST": "";
+        return result;
     }
 }
